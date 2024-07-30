@@ -1,7 +1,8 @@
 import React, { memo, useState } from 'react';
 import { IconButton } from 'react-native-paper';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-import { Icon } from 'react-native-elements'
+// import { Icon } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -87,11 +88,11 @@ const LoginScreen = ({ navigation }: Props) => {
                 <TouchableOpacity style={styles.loginWith}
                     onPress={() => navigation.navigate('')}
                 >
-                    <IconButton icon='fontawesome|facebook-square' style={styles.facebookBtn} onPress={_onLoginPressed} />
+                    <Button style={styles.facebookBtn} onPress={_onLoginPressed} ><Icon name='facebook' color={`blue`} size={25} /></Button>
 
-                    <IconButton icon='fontawesome|google-square' style={styles.googleBtn} onPress={_onLoginPressed} />
+                    <IconButton icon='login' style={styles.googleBtn} onPress={_onLoginPressed} />
 
-                    <IconButton icon='fontawesome|apple-square' style={styles.appleBtn} onPress={_onLoginPressed} />
+                    <IconButton icon='fontawesome|apple-f' style={styles.appleBtn} onPress={_onLoginPressed} />
                 </TouchableOpacity>
             </View>
 
