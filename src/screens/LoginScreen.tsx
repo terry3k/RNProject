@@ -2,7 +2,7 @@ import React, { memo, useState } from 'react';
 import { IconButton } from 'react-native-paper';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 // import { Icon } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -12,6 +12,8 @@ import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
 import { Navigation } from '../types';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+const MyIcon = <Icon name="home" size={30} color="red" />;
 // import LoginBackground from '../assets/loginBackground.jpg';
 // import { LoginBackground } from '../assets/loginBackground.jpg';
 
@@ -88,7 +90,7 @@ const LoginScreen = ({ navigation }: Props) => {
                 <TouchableOpacity style={styles.loginWith}
                     onPress={() => navigation.navigate('')}
                 >
-                    <Button style={styles.facebookBtn} onPress={_onLoginPressed} ><Icon name='facebook' color={`blue`} size={25} /></Button>
+                    <Button style={styles.facebookBtn} onPress={_onLoginPressed} >{MyIcon}</Button>
 
                     <IconButton icon='login' style={styles.googleBtn} onPress={_onLoginPressed} />
 
