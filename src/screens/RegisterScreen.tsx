@@ -18,8 +18,11 @@ type Props = {
     navigation: Navigation;
 };
 
-const LoginScreen = ({ navigation }: Props) => {
+const RegisterScreen = ({ navigation }: Props) => {
+    const [firstName, setFirstName] = useState({ value: '', error: '' });
+    const [lastName, setLastName] = useState({ value: '', error: '' });
     const [email, setEmail] = useState({ value: '', error: '' });
+    const [phoneNumber, setPhoneNumber] = useState({ value: '', error: '' });
     const [password, setPassword] = useState({ value: '', error: '' });
 
     const _onLoginPressed = () => {
@@ -41,10 +44,30 @@ const LoginScreen = ({ navigation }: Props) => {
 
             {/* <Logo /> */}
 
-            <Header>Log In</Header>
+            <Header>Sign Up</Header>
 
             <TextInput
-                icon={`user`}
+                label="First Name"
+                placeholder='Elize'
+                returnKeyType="next"
+                value={firstName.value}
+                onChangeText={text => setFirstName({ value: text, error: '' })}
+                error={!!firstName.error}
+                errorText={firstName.error}
+                autoCapitalize="none"
+            />
+            <TextInput
+                label="Last Name"
+                placeholder='Salaraz'
+                returnKeyType="next"
+                value={lastName.value}
+                onChangeText={text => setLastName({ value: text, error: '' })}
+                error={!!lastName.error}
+                errorText={lastName.error}
+                autoCapitalize="none"
+            />
+            <TextInput
+
                 label="Email Address"
                 placeholder='Email'
                 returnKeyType="next"
@@ -57,9 +80,20 @@ const LoginScreen = ({ navigation }: Props) => {
                 textContentType="emailAddress"
                 keyboardType="email-address"
             />
+            <TextInput
+                label="Phone Number"
+                placeholder='0236941200'
+                returnKeyType="next"
+                value={phoneNumber.value}
+                onChangeText={text => setPhoneNumber({ value: text, error: '' })}
+                error={!!phoneNumber.error}
+                errorText={phoneNumber.error}
+                autoCapitalize="none"
+            // autoCompleteType="email"
+            />
 
             <TextInput
-                icon={`password`}
+
                 label="Password"
                 placeholder='Password'
                 returnKeyType="done"
@@ -70,35 +104,23 @@ const LoginScreen = ({ navigation }: Props) => {
                 secureTextEntry
             />
 
-            <View style={styles.forgotPassword}>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('ForgotPasswordScreen')}
-                >
-                    <Text style={styles.forgotLabel}>Forgot your password?</Text>
+
+            <View>
+                <Text style={styles.label}>Where did you hear about us? </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('')}>
+                    <Button style={styles.whereHeardBtn} onPress={_onLoginPressed}>
+                        Influencer
+                    </Button>
                 </TouchableOpacity>
             </View>
-
             <Button style={styles.loginBtn} onPress={_onLoginPressed}>
-                Log In
+                Create Account
             </Button>
 
-            <View >
-                <Text style={styles.loginWithText}>or log in with</Text>
-                <TouchableOpacity style={styles.loginWith}
-                    onPress={() => navigation.navigate('')}
-                >
-                    <IconButton icon='fontawesome|facebook-square' style={styles.facebookBtn} onPress={_onLoginPressed} />
-
-                    <IconButton icon='fontawesome|google-square' style={styles.googleBtn} onPress={_onLoginPressed} />
-
-                    <IconButton icon='fontawesome|apple-square' style={styles.appleBtn} onPress={_onLoginPressed} />
-                </TouchableOpacity>
-            </View>
-
             <View style={styles.row}>
-                <Text style={styles.label}>Don’t have an account? </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-                    <Text style={styles.link}>Sign up</Text>
+                <Text style={styles.label}>Already have an account? </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+                    <Text style={styles.link}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
         </Background>
@@ -116,30 +138,12 @@ const styles = StyleSheet.create({
         color: '#fff',
         borderRadius: 5
     },
-    facebookBtn: {
-        width: '25%',
-        marginHorizontal: 5,
-        borderColor: '#6E9277',
-        borderWidth: 1,
-        color: '#fff',
+    whereHeardBtn: {
+        backgroundColor: '#fff',
+        color: '#6E9277',
         borderRadius: 20
     },
-    googleBtn: {
-        width: '25%',
-        marginHorizontal: 5,
-        borderColor: '#6E9277',
-        borderWidth: 1,
-        color: '#fff',
-        borderRadius: 20
-    },
-    appleBtn: {
-        width: '25%',
-        marginHorizontal: 5,
-        borderColor: '#6E9277',
-        borderWidth: 1,
-        color: '#fff',
-        borderRadius: 20
-    },
+
     loginWith: {
         justifyContent: 'center',
         flexDirection: 'row',
@@ -166,4 +170,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default memo(LoginScreen);
+export default memo(RegisterScreen);

@@ -4,15 +4,17 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
 } from 'react-native';
-
+// import * as LoginBackground from '../assets/loginBackground.jpg';
 type Props = {
   children: React.ReactNode;
+  imgSrc?: any
 };
 
-const Background = ({ children }: Props) => (
+const Background = ({ imgSrc, children }: Props) => (
   <ImageBackground
-    resizeMode="repeat"
+    resizeMode="cover"
     style={styles.background}
+
   >
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       {children}
@@ -22,6 +24,7 @@ const Background = ({ children }: Props) => (
 
 const styles = StyleSheet.create({
   background: {
+    backgroundColor: 'white',
     flex: 1,
     width: '100%',
   },
